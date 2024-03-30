@@ -1,0 +1,10 @@
+[DEFAULT]
+# Private bot token from discord dev dashboard
+BOT_TOKEN = ~
+# ID for the channel the bot will operate in
+CHANNEL_ID = ~
+# Weekly announcement time in UTC
+ANNOUNCE_TIME_HOUR = 0
+ANNOUNCE_TIME_MINUTE = 5
+# Day of the week, also UTC. 0-6 = Monday-Sunday
+WEEK_DAY = 0
