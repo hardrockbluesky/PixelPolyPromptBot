@@ -28,11 +28,11 @@ async def on_ready():
 
 # !idea: add a prompt to the csv
 @bot.command()
-async def idea(ctx, ideaString):
+async def idea(ctx, *, ideaString):
     for c in ideaString: # Check each character
         checkerList = [ c.isalpha(), c.isdecimal(), c.isdigit(), c.isnumeric(), c.isspace() ]
         if any(checkerList) == False:
-            await ctx.send(f"I can only take numbers, letters, and spaces, sorry! (Also if you use spaces, the idea needs to be inside quotation marks!)")
+            await ctx.send(f"I can only take numbers, letters, and spaces, sorry!")
             return
     csvStrings = []
     with open('prompts.csv', 'r', newline='') as csvIn: # Open in read mode
