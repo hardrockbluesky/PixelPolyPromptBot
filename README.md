@@ -10,7 +10,7 @@ Will take in ideas and spit them back out on a weekly schedule, or when requeste
 * These instructions only apply to the installation of this script, you'll need to also set up the bot through Discord.
 
 ## Commands:
-* !idea - Give it a prompt idea (!idea pizza) or (!idea "pizza party") if you need a space
+* !idea - Give it a prompt idea (!idea pizza) or (!idea pizza party)
 * !remove - delete a prompt idea
 * !reroll - dispense a new weekly prompt
 * !gimme - dispense a random prompt
