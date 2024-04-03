@@ -54,23 +54,16 @@ async def idea(ctx, *, ideaString):
 # !gimme a random prompt
 @bot.command()
 async def gimme(ctx):
-    channel = bot.get_channel(CHANNEL_ID)
-    csvStrings = []
-    with open('prompts.csv', 'r', newline='') as csvIn:
-        csvReader = csv.reader(csvIn, delimiter=',')
-        try:
-            csvStrings = next(csvReader)
-        except:
-            await channel.send(f"The prompt list is empty! Try adding some more ideas first.")
-            return
-    if len(csvStrings) > 0:
-        await channel.send(f"Your prompt is **{random.choice(csvStrings)}**!")
-    else:
-        await channel.send(f"The prompt list is empty! Try adding some more ideas first.")
+	await giveme()
+	
+# !gimmie a random prompt (just an alternate spelling)
+@bot.command()
+async def gimmie(ctx):
+	await giveme()
 
 # !remove a prompt from the csv
 @bot.command()
-async def remove(ctx, ideaString):
+async def remove(ctx, *, ideaString):
     csvStrings = []
     with open('prompts.csv', 'r', newline='') as csvIn:
         csvReader = csv.reader(csvIn, delimiter=',')
@@ -116,5 +109,20 @@ async def weekly():
     else:
         await channel.send(f"The prompt list is empty! Try adding some more ideas and !reroll.")
 
+# Giveme command defined as a separate function to allow calling from !gimme or !gimmie spellings
+async def giveme():
+    channel = bot.get_channel(CHANNEL_ID)
+    csvStrings = []
+    with open('prompts.csv', 'r', newline='') as csvIn:
+        csvReader = csv.reader(csvIn, delimiter=',')
+        try:
+            csvStrings = next(csvReader)
+        except:
+            await channel.send(f"The prompt list is empty! Try adding some more ideas first.")
+            return
+    if len(csvStrings) > 0:
+        await channel.send(f"Your prompt is **{random.choice(csvStrings)}**!")
+    else:
+        await channel.send(f"The prompt list is empty! Try adding some more ideas first.")
 
 bot.run(BOT_TOKEN)
