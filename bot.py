@@ -6,11 +6,12 @@ import random
 import csv
 import configparser
 
-# Open our config file and parse into our constants
+# Open our config file
 config = configparser.ConfigParser()
 config.read("config.ini")
 settings = config['DEFAULT'] # Just used to shorten the following code
 
+# Parse our constants from the config
 BOT_TOKEN = settings['BOT_TOKEN']
 CHANNEL_ID = int(settings['CHANNEL_ID'])
 ANNOUNCE_TIME = time(hour=int(settings['ANNOUNCE_TIME_HOUR']), minute=int(settings['ANNOUNCE_TIME_MINUTE']))
